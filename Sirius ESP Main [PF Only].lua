@@ -149,7 +149,7 @@ function EspLibrary.GetBoundingBox(torso)
     return onScreen, size, round(vector2New(torsoPosition.X - (size.X * 0.5), torsoPosition.Y - (size.Y * 0.5))), torsoPosition
 end
 
-function EspLibrary.GetHealth(player, character)
+function EspLibrary.GetHealth(player)
     local health, maxHealth = Health:getplayerhealth(player)
     if type(health) == "number" and type(maxHealth) == "number" then
         return health, maxHealth
@@ -321,7 +321,7 @@ function EspLibrary.Init()
 
                 local pointA, pointB, pointC = arrowPosition, screenCenter + arrowDirection * (arrowRadius - arrowSize) + rightVector * arrowSize, screenCenter + arrowDirection * (arrowRadius - arrowSize) + -rightVector * arrowSize
 
-                local health, maxHealth = EspLibrary.GetHealth(player, character)
+                local health, maxHealth = EspLibrary.GetHealth(player)
                 local healthBarSize = round(vector2New(EspLibrary.options.healthBarsSize, -(size.Y * (health / maxHealth))))
                 local healthBarPosition = round(vector2New(position.X - (3 + healthBarSize.X), position.Y + size.Y))
 
