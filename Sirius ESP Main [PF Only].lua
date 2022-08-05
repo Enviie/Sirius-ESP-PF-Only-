@@ -139,7 +139,7 @@ end
 
 function EspLibrary.GetCharacter(player)
     local character = CharTable[player]
-    return character, character and character.root
+    return character, character and character.torso
 end
 
 function EspLibrary.GetBoundingBox(torso)
