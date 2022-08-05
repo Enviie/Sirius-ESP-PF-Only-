@@ -138,6 +138,11 @@ function EspLibrary.GetTeam(player)
 end
 
 function EspLibrary.GetCharacter(player)
+    local character = player.Character
+    return character, character and findFirstChild(character, "HumanoidRootPart")
+end
+
+function EspLibrary.GetCharacterPF(player)
     local character = CharTable[player]
     return character, character and character.torso
 end
@@ -275,7 +280,7 @@ function EspLibrary.Init()
 
     runService:BindToRenderStep("esp_rendering", Enum.RenderPriority.Camera.Value + 1, function()
         for player, objects in pairs(EspLibrary.espCache) do
-            local character, torso = EspLibrary.GetCharacter(player)
+            local character, torso = EspLibrary.GetCharacterPF(player)
 
             if (character and torso) then
                 local onScreen, size, position, torsoPosition = EspLibrary.GetBoundingBox(torso)
